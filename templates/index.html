@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>YouTube Video Summarizer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>YouTube Video Summarizer</h1>
+    <form method="POST">
+      <input type="url" name="youtube_url" placeholder="Enter YouTube video URL" required />
+      <button type="submit">Summarize</button>
+    </form>
+
+    {% if summary %}
+      <div id="result">
+        <h2>Summary:</h2>
+        <p style="text-align: left;">{{ summary }}</p>
+      </div>
+    {% elif error %}
+      <div style="color: red; margin-top: 1rem;">
+        <p>Error: {{ error }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
